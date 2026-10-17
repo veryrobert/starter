@@ -9,6 +9,7 @@ import { ToolButton } from '@/components/shell/ToolButton'
 import { Toolbar, ToolbarSeparator } from '@/components/shell/Toolbar'
 import { Segmented } from '@/components/shell/Segmented'
 import { Field, FieldGroup } from '@/components/shell/Field'
+import { Splash } from '@/components/shell/Splash'
 import { cn } from '@/lib/utils'
 
 // Example app shell: full-bleed stage, tool rail top right, sheet for
@@ -32,6 +33,11 @@ export default function App() {
 
   return (
     <TooltipProvider delayDuration={400}>
+      <Splash label="Loading">
+        <path pathLength={1} d="M7 5h18a2 2 0 0 1 2 2v18a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" />
+        <path pathLength={1} d="M16 11v10" />
+        <path pathLength={1} d="M11 16h10" />
+      </Splash>
       <main className="fixed inset-0 grid place-items-center">
         <div
           className={cn('grid place-items-center bg-foreground text-primary-foreground transition-all', shape === 'circle' ? 'rounded-full' : 'rounded-2xl')}

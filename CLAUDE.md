@@ -6,7 +6,7 @@ This app was made from `veryrobert/starter`. Keep to its stack and style.
 - React + TypeScript + Vite. Static build to `dist/`, deployed to GitHub Pages on push to `main`.
 - Tailwind v4. Theme lives in `src/index.css` (`:root` tokens). Don't hardcode colours; use the tokens (`bg-background`, `text-muted-foreground`, `border-border`, `bg-panel`, …).
 - shadcn/ui (Radix, `radix-nova`) for anything interactive. Add with `npx shadcn@latest add <name>`. Don't hand-build what shadcn already has.
-- Lucide icons only, `strokeWidth={1.5}`, `size-5` in toolbars, `size-4` inline.
+- Lucide icons only, `strokeWidth={1.5}`, `size-5` (20px) in toolbars, `size-4` inline. Same in loom.
 - Set the subdomain in `public/CNAME`.
 
 ## Style
@@ -27,3 +27,4 @@ This app was made from `veryrobert/starter`. Keep to its stack and style.
 - `Swatches`: colour circles plus a custom picker.
 - `FilePick`: load one file, show its name, clear it.
 - `Field`, `FieldGroup`: labelled rows inside a sheet.
+- `Splash`: the load screen. Each app has its own small mark, 3 to 8 stroke paths on a 32×32 grid (`pathLength={1}`), drawn in order with loom's timing, then faded.
