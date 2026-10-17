@@ -1,4 +1,4 @@
-# Starter
+# starter
 
 Base for small apps and experiments: React, TypeScript, Vite, Tailwind v4, shadcn/ui and Lucide, with a dark minimal theme and GitHub Pages deploy.
 

@@ -15,6 +15,7 @@ This app was made from `veryrobert/starter`. Keep to its stack and style.
 - Icons over text. Actions are icon buttons (`ToolButton`) with a required `label`, which becomes the tooltip and accessible name. Use text buttons only where an icon would be ambiguous.
 - The content is the page. Layout: full-bleed stage, tool rail top right, settings in a `Sheet` on the right, a few primary actions in a `Toolbar` at the bottom centre. Floating UI uses the `panel` utility (frosted, hairline border, rounded-full for bars).
 - Selected states invert (`bg-primary text-primary-foreground`), as in `Segmented`.
+- App names are lowercase everywhere: `<title>`, README heading, the index (e.g. `cards`, `loom`).
 - Short labels: one or two words. No helper paragraphs, no explainer copy, no emoji.
 - No gradients, drop shadows, cards inside cards, coloured accent buttons or default shadcn demo looks.
 - Respect `prefers-reduced-motion`; motion is short (150–250ms) and functional.
