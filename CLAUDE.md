@@ -11,7 +11,7 @@ This app was made from `veryrobert/starter`. Keep to its stack and style.
 
 ## Style
 - Dark only. True black page (`#000`); panels, sheets and fields are barely-off blacks, separated by hairline borders rather than fill. One warm off-white (`foreground`), one muted grey (`muted-foreground`). No other colours unless the app's content needs them.
-- Minimal, refined typography: system Helvetica stack, 14px base, `text-xs`/`text-sm` for UI, `font-medium` at most. No bold headings, no uppercase labels, no letter-spaced eyebrows.
+- Minimal, refined typography: Helvetica Neue (`'Helvetica Neue', Helvetica, Arial`; never the system font first), 14px base, `text-xs`/`text-sm` for UI, `font-medium` at most. No bold headings, no uppercase labels, no letter-spaced eyebrows.
 - Icons over text. Actions are icon buttons (`ToolButton`) with a required `label`, which becomes the tooltip and accessible name. Use text buttons only where an icon would be ambiguous.
 - The content is the page. Layout: full-bleed stage, tool rail top right, settings in a `Sheet` on the right, a few primary actions in a `Toolbar` at the bottom centre. Floating UI uses the `panel` utility (frosted, hairline border, rounded-full for bars).
 - Selected states invert (`bg-primary text-primary-foreground`), as in `Segmented`.
