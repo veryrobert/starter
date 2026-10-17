@@ -13,7 +13,7 @@ This app was made from `veryrobert/starter`. Keep to its stack and style.
 - Dark only. True black page (`#000`); panels, sheets and fields are barely-off blacks, separated by hairline borders rather than fill. One warm off-white (`foreground`), one muted grey (`muted-foreground`). No other colours unless the app's content needs them.
 - Minimal, refined typography: Geist (shadcn's typeface, bundled via `@fontsource-variable/geist`), Helvetica Neue as fallback; Geist Mono for code and figures. Never the system font first. 14px base, `text-xs`/`text-sm` for UI, `font-medium` at most. No bold headings, no uppercase labels, no letter-spaced eyebrows.
 - Icons over text. Actions are icon buttons (`ToolButton`) with a required `label`, which becomes the tooltip and accessible name. Use text buttons only where an icon would be ambiguous.
-- The content is the page. Layout: full-bleed stage, tool rail top right, settings in a `Sheet` on the right, a few primary actions in a `Toolbar` at the bottom centre. Floating UI uses the `panel` utility (frosted, hairline border, rounded-full for bars).
+- The content is the page. Layout: full-bleed stage, `PanelRail` (top right on desktop, a bottom pill on phones), settings in a `PanelSheet` (right on desktop, bottom half on phones), a few primary actions in a `Toolbar` inside an `ActionDock`. The stage keeps clear of whatever is open (see `layout.ts`). Floating UI uses the `panel` utility (frosted, hairline border, rounded-full for bars).
 - Selected states invert (`bg-primary text-primary-foreground`), as in `Segmented`.
 - App names are lowercase everywhere: `<title>`, README heading, the index (e.g. `cards`, `loom`).
 - Short labels: one or two words. No helper paragraphs, no explainer copy, no emoji.
@@ -21,6 +21,7 @@ This app was made from `veryrobert/starter`. Keep to its stack and style.
 - Respect `prefers-reduced-motion`; motion is short (150–250ms) and functional.
 
 ## Shell components (`src/components/shell`)
+- `PanelRail`, `PanelSheet`, `ActionDock`, `layout.ts` (`usePhone`, sizes, safe area): the responsive shell. Phones get the controls at the bottom, within thumb reach.
 - `ToolButton`: round icon button + tooltip.
 - `Toolbar`, `ToolbarSeparator`: frosted pill bar.
 - `Segmented`, `OnOff`: single-choice control; options can show an icon instead of text.

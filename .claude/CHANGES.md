@@ -5,3 +5,4 @@
 - Dark-only theme: true black page, barely-off-black panels, one warm off-white, hairline borders
 - Shell components: ToolButton, Toolbar, Segmented/OnOff, Swatches, FilePick, Field, and Splash (load screen)
 - CLAUDE.md style guide: icons over text, 20px icons at 1.5 stroke, lowercase app names
+- Geist as the interface font (shadcn's typeface), Helvetica Neue as fallback

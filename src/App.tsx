@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Download, Palette, RotateCcw, SlidersHorizontal, Sun } from 'lucide-react'
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from '@/components/ui/sheet'
 import { Slider } from '@/components/ui/slider'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
@@ -10,6 +9,10 @@ import { Toolbar, ToolbarSeparator } from '@/components/shell/Toolbar'
 import { Segmented } from '@/components/shell/Segmented'
 import { Field, FieldGroup } from '@/components/shell/Field'
 import { Splash } from '@/components/shell/Splash'
+import { PanelRail } from '@/components/shell/PanelRail'
+import { PanelSheet } from '@/components/shell/PanelSheet'
+import { ActionDock } from '@/components/shell/ActionDock'
+import { PANEL_W, PHONE_SHEET, SAFE_BOTTOM, usePhone } from '@/components/shell/layout'
 import { cn } from '@/lib/utils'
 
 // Example app shell: full-bleed stage, tool rail top right, sheet for
@@ -26,6 +29,7 @@ type PanelId = (typeof panels)[number]['id']
 
 export default function App() {
   const [panel, setPanel] = useState<PanelId | null>(null)
+  const phone = usePhone()
   const [shape, setShape] = useState<'circle' | 'square'>('circle')
   const [size, setSize] = useState(160)
   const [label, setLabel] = useState('Starter')
@@ -38,7 +42,11 @@ export default function App() {
         <path pathLength={1} d="M16 11v10" />
         <path pathLength={1} d="M11 16h10" />
       </Splash>
-      <main className="fixed inset-0 grid place-items-center">
+      <main
+        className="fixed inset-0 grid place-items-center transition-[right,bottom] duration-200"
+        // The stage keeps clear of the panel: beside it on desktop, above it (or the bars) on phones
+        style={phone ? { bottom: panel ? `${PHONE_SHEET * 100}dvh` : `calc(${SAFE_BOTTOM} + 116px)` } : { right: panel ? PANEL_W : 0 }}
+      >
         <div
           className={cn('grid place-items-center bg-foreground text-primary-foreground transition-all', shape === 'circle' ? 'rounded-full' : 'rounded-2xl')}
           style={{ width: size, height: size }}
@@ -47,32 +55,9 @@ export default function App() {
         </div>
       </main>
 
-      <nav
-        aria-label="Panels"
-        className={cn('panel fixed top-3 right-3 z-60 flex flex-col gap-1 rounded-full p-1 transition-[right] duration-200', panel && 'sm:right-[calc(300px+0.75rem)]')}
-      >
-        {panels.map(p => (
-          <ToolButton
-            key={p.id}
-            icon={p.icon}
-            label={p.label}
-            active={panel === p.id}
-            onClick={() => setPanel(panel === p.id ? null : p.id)}
-          />
-        ))}
-      </nav>
+      <PanelRail panels={panels} open={panel} onToggle={id => setPanel(panel === id ? null : id)} phone={phone} />
 
-      <Sheet open={panel !== null} onOpenChange={open => !open && setPanel(null)} modal={false}>
-        <SheetContent
-          side="right"
-          className="panel gap-0 data-[side=right]:w-[min(300px,86vw)] data-[side=right]:sm:max-w-[300px]"
-          onInteractOutside={e => e.preventDefault()}
-        >
-          <SheetHeader>
-            <SheetTitle>{current?.label}</SheetTitle>
-            <SheetDescription className="sr-only">{current?.label} settings</SheetDescription>
-          </SheetHeader>
-          <div className="flex flex-col gap-6 overflow-y-auto px-4 pb-6">
+      <PanelSheet open={panel !== null} title={current?.label} onClose={() => setPanel(null)} phone={phone}>
             <FieldGroup>
               <Field label="Shape">
                 <Segmented
@@ -94,17 +79,15 @@ export default function App() {
             <Button variant="secondary" onClick={() => { setShape('circle'); setSize(160); setLabel('Starter') }}>
               Reset
             </Button>
-          </div>
-        </SheetContent>
-      </Sheet>
+      </PanelSheet>
 
-      <div className="pointer-events-none fixed inset-x-0 bottom-4 flex justify-center">
-        <Toolbar aria-label="Actions" className="pointer-events-auto">
+      <ActionDock phone={phone} panelOpen={panel !== null}>
+        <Toolbar aria-label="Actions">
           <ToolButton icon={RotateCcw} label="Reset" side="top" onClick={() => setSize(160)} />
           <ToolbarSeparator />
           <ToolButton icon={Download} label="Export" side="top" onClick={() => setPanel('export')} />
         </Toolbar>
-      </div>
+      </ActionDock>
     </TooltipProvider>
   )
 }
