@@ -22,5 +22,7 @@ This app was made from `veryrobert/starter`. Keep to its stack and style.
 ## Shell components (`src/components/shell`)
 - `ToolButton`: round icon button + tooltip.
 - `Toolbar`, `ToolbarSeparator`: frosted pill bar.
-- `Segmented`: single-choice control.
+- `Segmented`, `OnOff`: single-choice control; options can show an icon instead of text.
+- `Swatches`: colour circles plus a custom picker.
+- `FilePick`: load one file, show its name, clear it.
 - `Field`, `FieldGroup`: labelled rows inside a sheet.
