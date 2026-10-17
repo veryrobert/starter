@@ -2,7 +2,7 @@ import type { ReactNode } from 'react'
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from '@/components/ui/sheet'
 import { PANEL_W, PHONE_SHEET, SAFE_BOTTOM } from './layout'
 
-// A non-modal panel: from the right on desktop, up from the bottom on phones. On phones the
+// A non-modal panel (closes when you click off it): from the right on desktop, up from the bottom on phones. On phones the
 // panel rail floats over its lower edge, so the content keeps clear of it.
 export function PanelSheet({
   open,
@@ -23,7 +23,12 @@ export function PanelSheet({
         side={phone ? 'bottom' : 'right'}
         className="panel gap-0 data-[side=bottom]:rounded-t-2xl data-[side=bottom]:border-x-0 data-[side=right]:sm:max-w-none"
         style={phone ? { height: `${PHONE_SHEET * 100}dvh` } : { width: `min(${PANEL_W}px, 86vw)` }}
-        onInteractOutside={e => e.preventDefault()}
+        // Clicking off the panel closes it, except on the panel buttons (they switch panels) and in
+        // anything opened from the panel, like a dialog, menu or tooltip
+        onInteractOutside={e => {
+          const t = e.target as Element | null
+          if (t?.closest('[aria-label="Panels"], [role="dialog"], [role="menu"], [data-radix-popper-content-wrapper]')) e.preventDefault()
+        }}
       >
         <SheetHeader>
           <SheetTitle>{title}</SheetTitle>

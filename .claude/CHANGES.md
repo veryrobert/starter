@@ -1,5 +1,9 @@
 # Change Log
 
+## 2026-10-17 — Phone layout
+- PanelRail, PanelSheet, ActionDock and layout.ts: desktop unchanged, phones get controls at the bottom and bottom-half panels
+- viewport-fit=cover so the safe area is respected
+
 ## 2026-10-17 — First push: the starter template
 - React, TypeScript, Vite, Tailwind v4, shadcn/ui (Radix) and Lucide, deployed to GitHub Pages on push to main
 - Dark-only theme: true black page, barely-off-black panels, one warm off-white, hairline borders
