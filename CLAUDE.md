@@ -1,0 +1,26 @@
+# Building in this project
+
+This app was made from `veryrobert/starter`. Keep to its stack and style.
+
+## Stack
+- React + TypeScript + Vite. Static build to `dist/`, deployed to GitHub Pages on push to `main`.
+- Tailwind v4. Theme lives in `src/index.css` (`:root` tokens). Don't hardcode colours; use the tokens (`bg-background`, `text-muted-foreground`, `border-border`, `bg-panel`, …).
+- shadcn/ui (Radix, `radix-nova`) for anything interactive. Add with `npx shadcn@latest add <name>`. Don't hand-build what shadcn already has.
+- Lucide icons only, `strokeWidth={1.5}`, `size-5` in toolbars, `size-4` inline.
+- Set the subdomain in `public/CNAME`.
+
+## Style
+- Dark only. True black page (`#000`), one warm off-white (`foreground`), one muted grey (`muted-foreground`). No other colours unless the app's content needs them.
+- Minimal, refined typography: system Helvetica stack, 14px base, `text-xs`/`text-sm` for UI, `font-medium` at most. No bold headings, no uppercase labels, no letter-spaced eyebrows.
+- Icons over text. Actions are icon buttons (`ToolButton`) with a required `label`, which becomes the tooltip and accessible name. Use text buttons only where an icon would be ambiguous.
+- The content is the page. Layout: full-bleed stage, tool rail top right, settings in a `Sheet` on the right, a few primary actions in a `Toolbar` at the bottom centre. Floating UI uses the `panel` utility (frosted, hairline border, rounded-full for bars).
+- Selected states invert (`bg-primary text-primary-foreground`), as in `Segmented`.
+- Short labels: one or two words. No helper paragraphs, no explainer copy, no emoji.
+- No gradients, drop shadows, cards inside cards, coloured accent buttons or default shadcn demo looks.
+- Respect `prefers-reduced-motion`; motion is short (150–250ms) and functional.
+
+## Shell components (`src/components/shell`)
+- `ToolButton`: round icon button + tooltip.
+- `Toolbar`, `ToolbarSeparator`: frosted pill bar.
+- `Segmented`: single-choice control.
+- `Field`, `FieldGroup`: labelled rows inside a sheet.
