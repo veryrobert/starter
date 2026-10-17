@@ -51,42 +51,42 @@
 }
 
 :root {
-    /* Dark only, taken from Card studio. One warm off-white, one muted grey,
-       hairline borders, translucent fills. */
+    /* Dark only. True black page; surfaces are barely-off blacks told apart by
+       hairline borders more than fill. One warm off-white, one muted grey. */
     color-scheme: dark;
     --background: #000;
     --foreground: #ecebe8;
-    --card: #101114;
+    --card: #070707;
     --card-foreground: #ecebe8;
-    --popover: rgb(26 27 32 / 0.92);
+    --popover: rgb(14 14 14 / 0.96);
     --popover-foreground: #ecebe8;
-    --panel: rgb(26 27 32 / 0.82); /* frosted floating UI, pair with backdrop-blur */
+    --panel: rgb(10 10 10 / 0.86); /* floating UI and the side panel, pair with backdrop-blur */
     --primary: #ecebe8;
-    --primary-foreground: #141519;
-    --secondary: rgb(255 255 255 / 0.07);
+    --primary-foreground: #0a0a0a;
+    --secondary: rgb(255 255 255 / 0.06);
     --secondary-foreground: #ecebe8;
-    --muted: rgb(255 255 255 / 0.07);
-    --muted-foreground: #9c9da4;
-    --accent: rgb(255 255 255 / 0.1);
+    --muted: rgb(255 255 255 / 0.06);
+    --muted-foreground: #8e8f94;
+    --accent: rgb(255 255 255 / 0.08);
     --accent-foreground: #ecebe8;
     --destructive: #f07a6a;
     --warning: #f0c46a;
-    --border: rgb(255 255 255 / 0.13);
-    --input: rgb(255 255 255 / 0.13);
+    --border: rgb(255 255 255 / 0.08);
+    --input: rgb(255 255 255 / 0.1);
     --ring: rgb(236 235 232 / 0.6);
     --chart-1: #ecebe8;
-    --chart-2: #9c9da4;
-    --chart-3: #6b6c72;
-    --chart-4: #45464c;
-    --chart-5: #2a2b30;
+    --chart-2: #8e8f94;
+    --chart-3: #5f6065;
+    --chart-4: #3a3b3f;
+    --chart-5: #232326;
     --radius: 0.625rem;
-    --sidebar: #000;
+    --sidebar: #050505;
     --sidebar-foreground: #ecebe8;
     --sidebar-primary: #ecebe8;
-    --sidebar-primary-foreground: #141519;
-    --sidebar-accent: rgb(255 255 255 / 0.07);
+    --sidebar-primary-foreground: #0a0a0a;
+    --sidebar-accent: rgb(255 255 255 / 0.06);
     --sidebar-accent-foreground: #ecebe8;
-    --sidebar-border: rgb(255 255 255 / 0.13);
+    --sidebar-border: rgb(255 255 255 / 0.08);
     --sidebar-ring: rgb(236 235 232 / 0.6);
 }
 
