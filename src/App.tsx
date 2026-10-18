@@ -45,7 +45,7 @@ export default function App() {
       <main
         className="fixed inset-0 grid place-items-center transition-[right,bottom] duration-200"
         // The stage keeps clear of the panel: beside it on desktop, above it (or the bars) on phones
-        style={phone ? { bottom: panel ? `${PHONE_SHEET * 100}dvh` : `calc(${SAFE_BOTTOM} + 116px)` } : { right: panel ? PANEL_W : 0 }}
+        style={phone ? { bottom: panel ? `${PHONE_SHEET * 100}dvh` : `calc(${SAFE_BOTTOM} + 68px)`, right: 60 } : { right: panel ? PANEL_W : 0 }}
       >
         <div
           className={cn('grid place-items-center bg-foreground text-primary-foreground transition-all', shape === 'circle' ? 'rounded-full' : 'rounded-2xl')}
