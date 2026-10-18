@@ -1,12 +1,12 @@
 # Change Log
 
+## 2026-10-18 — Phone menu: rail on the right, actions at the bottom
+- On phones the panel buttons stay in a column top right (clear of the notch) instead of a second bar at the bottom
+- The actions bar sits alone along the bottom; the canvas keeps clear of both
+
+## 2026-10-17 — Panels close on click-off
+- PanelSheet closes when you click off it, except on the panel buttons and anything opened from the panel
+
 ## 2026-10-17 — Phone layout
 - PanelRail, PanelSheet, ActionDock and layout.ts: desktop unchanged, phones get controls at the bottom and bottom-half panels
 - viewport-fit=cover so the safe area is respected
-
-## 2026-10-17 — First push: the starter template
-- React, TypeScript, Vite, Tailwind v4, shadcn/ui (Radix) and Lucide, deployed to GitHub Pages on push to main
-- Dark-only theme: true black page, barely-off-black panels, one warm off-white, hairline borders
-- Shell components: ToolButton, Toolbar, Segmented/OnOff, Swatches, FilePick, Field, and Splash (load screen)
-- CLAUDE.md style guide: icons over text, 20px icons at 1.5 stroke, lowercase app names
-- Geist as the interface font (shadcn's typeface), Helvetica Neue as fallback
