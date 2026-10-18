@@ -1,8 +1,8 @@
 # Change Log
 
-## 2026-10-18 — Phone menu: rail on the right, actions at the bottom
-- On phones the panel buttons stay in a column top right (clear of the notch) instead of a second bar at the bottom
-- The actions bar sits alone along the bottom; the canvas keeps clear of both
+## 2026-10-18 — Phone menu: a row top right, actions at the bottom
+- On phones the panel buttons sit in a row top right (clear of the notch) instead of a second bar at the bottom
+- The actions bar sits alone along the bottom; the content sits between the two
 
 ## 2026-10-17 — Panels close on click-off
 - PanelSheet closes when you click off it, except on the panel buttons and anything opened from the panel
