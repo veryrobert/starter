@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { TooltipProvider } from '@/components/ui/tooltip'
 import { ToolButton } from '@/components/shell/ToolButton'
-import { Toolbar, ToolbarSeparator } from '@/components/shell/Toolbar'
+import { Toolbar } from '@/components/shell/Toolbar'
 import { Segmented } from '@/components/shell/Segmented'
 import { Field, FieldGroup } from '@/components/shell/Field'
 import { Splash } from '@/components/shell/Splash'
@@ -84,8 +84,6 @@ export default function App() {
       <ActionDock phone={phone} panelOpen={panel !== null}>
         <Toolbar aria-label="Actions">
           <ToolButton icon={RotateCcw} label="Reset" side="top" onClick={() => setSize(160)} />
-          <ToolbarSeparator />
-          <ToolButton icon={Download} label="Export" side="top" onClick={() => setPanel('export')} />
         </Toolbar>
       </ActionDock>
     </TooltipProvider>
