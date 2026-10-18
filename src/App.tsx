@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Download, Palette, RotateCcw, SlidersHorizontal, Sun } from 'lucide-react'
+import { Download, Frame, Palette, RotateCcw, Shapes } from 'lucide-react'
 import { Slider } from '@/components/ui/slider'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
@@ -13,15 +13,18 @@ import { PanelRail } from '@/components/shell/PanelRail'
 import { PanelSheet } from '@/components/shell/PanelSheet'
 import { ActionDock } from '@/components/shell/ActionDock'
 import { PANEL_W, PHONE_SHEET, SAFE_BOTTOM, usePhone } from '@/components/shell/layout'
+import { FORMATS, type FormatName, formatTall } from '@/components/shell/formats'
 import { cn } from '@/lib/utils'
 
 // Example app shell: full-bleed stage, tool rail top right, sheet for
 // settings, toolbar bottom centre. Replace the stage with your app.
+// Panels run in the shared order (see CLAUDE.md): what you make, Colour, Canvas, the app's own,
+// Library, Settings, Export last.
 
 const panels = [
-  { id: 'design', label: 'Design', icon: SlidersHorizontal },
+  { id: 'design', label: 'Design', icon: Shapes },
   { id: 'colour', label: 'Colour', icon: Palette },
-  { id: 'light', label: 'Lighting', icon: Sun },
+  { id: 'canvas', label: 'Canvas', icon: Frame },
   { id: 'export', label: 'Export', icon: Download },
 ] as const
 
@@ -33,6 +36,7 @@ export default function App() {
   const [shape, setShape] = useState<'circle' | 'square'>('circle')
   const [size, setSize] = useState(160)
   const [label, setLabel] = useState('Starter')
+  const [format, setFormat] = useState<FormatName>('4:5') // every app starts on 4:5
   const current = panels.find(p => p.id === panel)
 
   return (
@@ -49,7 +53,7 @@ export default function App() {
       >
         <div
           className={cn('grid place-items-center bg-foreground text-primary-foreground transition-all', shape === 'circle' ? 'rounded-full' : 'rounded-2xl')}
-          style={{ width: size, height: size }}
+          style={{ width: size, height: size * formatTall(format) }}
         >
           <span className="text-sm font-medium">{label}</span>
         </div>
@@ -58,6 +62,13 @@ export default function App() {
       <PanelRail panels={panels} open={panel} onToggle={id => setPanel(panel === id ? null : id)} phone={phone} />
 
       <PanelSheet open={panel !== null} title={current?.label} onClose={() => setPanel(null)} phone={phone}>
+          {panel === 'canvas' ? (
+            <FieldGroup>
+              <Field label="Format">
+                <Segmented label="Format" value={format} onChange={setFormat} options={FORMATS.map(f => ({ value: f.name, label: f.name }))} />
+              </Field>
+            </FieldGroup>
+          ) : (<>
             <FieldGroup>
               <Field label="Shape">
                 <Segmented
@@ -79,6 +90,7 @@ export default function App() {
             <Button variant="secondary" onClick={() => { setShape('circle'); setSize(160); setLabel('Starter') }}>
               Reset
             </Button>
+          </>)}
       </PanelSheet>
 
       <ActionDock phone={phone} panelOpen={panel !== null}>
